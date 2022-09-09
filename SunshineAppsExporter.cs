@@ -9,18 +9,18 @@ namespace SunshineAppsExporter {
     public class SunshineAppsExporter : GenericPlugin {
         private static readonly ILogger logger = LogManager.GetLogger();
 
-        private SunshineAppsExporterSettingsViewModel settings { get; set; }
+        private SunshineAppsExporterSettingsViewModel Settings { get; set; }
 
-        private SunshineExporter exporter { get; set; }
+        private SunshineExporter Exporter { get; set; }
 
         public override Guid Id { get; } = Guid.Parse("ec5e8181-731e-4ff6-bd9b-3142e79bb1ed");
 
         public SunshineAppsExporter(IPlayniteAPI api) : base(api) {
-            settings = new SunshineAppsExporterSettingsViewModel(this);
+            Settings = new SunshineAppsExporterSettingsViewModel(this);
             Properties = new GenericPluginProperties {
                 HasSettings = true
             };
-            exporter = new SunshineExporter(api, settings.Settings);
+            Exporter = new SunshineExporter(api, Settings.Settings);
         }
 
         public override void OnGameInstalled(OnGameInstalledEventArgs args) {
@@ -56,7 +56,7 @@ namespace SunshineAppsExporter {
         }
 
         public override ISettings GetSettings(bool firstRunSettings) {
-            return settings;
+            return Settings;
         }
 
         public override UserControl GetSettingsView(bool firstRunSettings) {
@@ -91,12 +91,12 @@ namespace SunshineAppsExporter {
         }
 
         private void ExportAllGames() {
-            exporter.ExportAll();
+            Exporter.ExportAll();
             PlayniteApi.Dialogs.ShowMessage("Export complete!", "Sunshine Export");
         }
 
         private void ExportInstalledGames() {
-            exporter.ExportInstalled();
+            Exporter.ExportInstalled();
             PlayniteApi.Dialogs.ShowMessage("Export complete!", "Sunshine Export");
         }
 

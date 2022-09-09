@@ -6,7 +6,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SunshineAppsExporter {
+namespace SunshineAppsExporter.Exporters {
     internal class DefaultAppExporter : AppExporterBase {
         public DefaultAppExporter(SunshineAppsExporterSettings settings, IGameDatabaseAPI gameDatabaseAPI) : base(settings, gameDatabaseAPI) { }
 

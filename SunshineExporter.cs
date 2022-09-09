@@ -1,5 +1,6 @@
 ﻿using Playnite.SDK;
 using Playnite.SDK.Models;
+using SunshineAppsExporter.Exporters;
 using SunshineAppsExporter.Models;
 using System;
 using System.Collections.Generic;
@@ -55,14 +56,6 @@ namespace SunshineAppsExporter {
                 apps.Add(exporter.ExportGame(game, API.Database));
             }
             return apps;
-        }
-
-        internal string GetCommand(Game game, GameAction action) {
-            var command = action.Path;
-            if (action.WorkingDir == "{InstallDir}") {
-                command = game.InstallDirectory + Path.DirectorySeparatorChar + command;
-            }
-            return command;
         }
 
         internal IAppExporter GetExporter(Guid gamePluginId) {

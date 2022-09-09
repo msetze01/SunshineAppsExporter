@@ -5,7 +5,7 @@ using System.Drawing;
 using Playnite.SDK;
 using SunshineAppsExporter.Models;
 
-namespace SunshineAppsExporter {
+namespace SunshineAppsExporter.Exporters {
     internal abstract class AppExporterBase : IAppExporter {
         protected SunshineAppsExporterSettings Settings { get; set; }
         protected IGameDatabaseAPI GameDatabaseAPI { get; set; }
@@ -13,7 +13,7 @@ namespace SunshineAppsExporter {
             Settings = settings;
             GameDatabaseAPI = gameDatabaseAPI;
         }
-        
+
         public abstract SunshineApp ExportGame(Game game, IGameDatabaseAPI gameDatabaseAPI);
 
         protected virtual string GetGameImage(Game game) {
@@ -22,7 +22,7 @@ namespace SunshineAppsExporter {
 
             var folderPath = GameDatabaseAPI.GetFileStoragePath(game.Id);
             var mediaFolder = new DirectoryInfo(folderPath).Parent.FullName;
-            var imagePath = Path.Combine(mediaFolder, game.CoverImage);            
+            var imagePath = Path.Combine(mediaFolder, game.CoverImage);
             if (!File.Exists(imagePath)) { return null; }
 
             // Valid save path for assets?

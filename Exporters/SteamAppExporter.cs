@@ -1,8 +1,9 @@
 ﻿using Playnite.SDK;
 using Playnite.SDK.Models;
+using SunshineAppsExporter.Exporters;
 using SunshineAppsExporter.Models;
 
-namespace SunshineAppsExporter {
+namespace SunshineAppsExporter.Exporters {
     internal class SteamAppExporter : AppExporterBase {
         public SteamAppExporter(SunshineAppsExporterSettings settings, IGameDatabaseAPI gameDatabaseAPI) : base(settings, gameDatabaseAPI) {
         }

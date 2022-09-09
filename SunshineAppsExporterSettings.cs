@@ -12,7 +12,7 @@ namespace SunshineAppsExporter {
 
     public class SunshineAppsExporterSettingsViewModel : ObservableObject, ISettings {
         private readonly SunshineAppsExporter plugin;
-        private SunshineAppsExporterSettings editingClone { get; set; }
+        private SunshineAppsExporterSettings EditingClone { get; set; }
 
         private SunshineAppsExporterSettings settings;
         public SunshineAppsExporterSettings Settings {
@@ -40,13 +40,13 @@ namespace SunshineAppsExporter {
 
         public void BeginEdit() {
             // Code executed when settings view is opened and user starts editing values.
-            editingClone = Serialization.GetClone(Settings);
+            EditingClone = Serialization.GetClone(Settings);
         }
 
         public void CancelEdit() {
             // Code executed when user decides to cancel any changes made since BeginEdit was called.
             // This method should revert any changes made to Option1 and Option2.
-            Settings = editingClone;
+            Settings = EditingClone;
         }
 
         public void EndEdit() {

@@ -53,11 +53,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppExporterBase.cs" />
-    <Compile Include="AppStorePluginMapper.cs" />
-    <Compile Include="DefaultAppExporter.cs" />
-    <Compile Include="IAppExporter.cs" />
-    <Compile Include="SteamAppExporter.cs" />
+    <Compile Include="Exporters\AppExporterBase.cs" />
+    <Compile Include="Exporters\AppStorePluginMapper.cs" />
+    <Compile Include="Exporters\DefaultAppExporter.cs" />
+    <Compile Include="Exporters\IAppExporter.cs" />
+    <Compile Include="Exporters\SteamAppExporter.cs" />
     <Compile Include="Models\SunshineApp.cs" />
     <Compile Include="Models\SunshineAppsFile.cs" />
     <Compile Include="SunshineAppsFileWriter.cs" />

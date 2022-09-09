@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SunshineAppsExporter {
+namespace SunshineAppsExporter.Exporters {
     internal class AppStorePluginMapper {
         private static Dictionary<Guid, AppStore> PluginsById { get; set; } = new Dictionary<Guid, AppStore>() {
             [Guid.Parse("e3c26a3d-d695-4cb7-a769-5ff7612c7edd")] = AppStore.Battlenet,
