@@ -40,10 +40,7 @@ namespace SunshineAppsExporter.Exporters {
 
                 // Copy failed or cover image is not a PNG. Convert to PNG?
                 image.Save(targetImage, ImageFormat.Png);
-                if (targetImageInfo.Exists) { return targetImageInfo.FullName; }
-
-                // Bail
-                return null;
+                return targetImageInfo.FullName;
 
             } catch (FileNotFoundException) {
                 return null;
