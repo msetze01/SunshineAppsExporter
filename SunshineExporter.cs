@@ -4,7 +4,6 @@ using SunshineAppsExporter.Exporters;
 using SunshineAppsExporter.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace SunshineAppsExporter {
@@ -52,19 +51,31 @@ namespace SunshineAppsExporter {
                     continue;
                 }
 
-                IAppExporter exporter = GetExporter(game.PluginId);
-                apps.Add(exporter.ExportGame(game, API.Database));
+                if (game.Tags?.Any(t => t.Name == "sunshine-ignore") ?? false) {
+                    Logger.Warn($"Game {game.Name} is tagged for ignore, skipping export.");
+                    continue;
+                }
+
+                try {
+                    var exporter = GetExporter(game.PluginId);
+                    apps.Add(exporter.ExportGame(game, API.Database));
+                } catch (GameNotFoundException e) {
+                    Logger.Warn(e.ToString());
+                }
             }
             return apps;
         }
 
         internal IAppExporter GetExporter(Guid gamePluginId) {
             var storeType = AppStorePluginMapper.GetById(gamePluginId);
+
             switch (storeType) {
                 case AppStore.Steam:
                     return new SteamAppExporter(Settings, API.Database);
+                case AppStore.Epic:
+                    return new EpicGamesAppExporter(Settings, API.Database);
                 default:
-                    return new DefaultAppExporter(Settings, API.Database);
+                    return new PlayniteAppExporter(Settings, API.Database);
             }
         }
     }

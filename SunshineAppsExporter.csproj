@@ -56,8 +56,14 @@
     <Compile Include="Exporters\AppExporterBase.cs" />
     <Compile Include="Exporters\AppStorePluginMapper.cs" />
     <Compile Include="Exporters\DefaultAppExporter.cs" />
+    <Compile Include="Exporters\EpicGamesAppExporter.cs" />
+    <Compile Include="Exporters\GameImageConverter.cs" />
+    <Compile Include="Exporters\GameNotFoundException.cs" />
     <Compile Include="Exporters\IAppExporter.cs" />
     <Compile Include="Exporters\SteamAppExporter.cs" />
+    <Compile Include="Exporters\PlayniteAppExporter.cs" />
+    <Compile Include="Models\EpicGamesInstalledApp.cs" />
+    <Compile Include="Models\EpicGamesInstalledAppFile.cs" />
     <Compile Include="Models\SunshineApp.cs" />
     <Compile Include="Models\SunshineAppsFile.cs" />
     <Compile Include="SunshineAppsFileWriter.cs" />
@@ -75,6 +81,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="SunshineAppsExporterSettingsView.xaml">
@@ -86,6 +93,9 @@
     <None Include="icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

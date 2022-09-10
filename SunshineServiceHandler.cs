@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.ServiceProcess;
+﻿using System.Diagnostics;
 
 namespace SunshineAppsExporter {
     internal class SunshineServiceHandler {
@@ -9,8 +7,6 @@ namespace SunshineAppsExporter {
             stopInfo.UseShellExecute = true;
             stopInfo.Verb = "runas";
             System.Diagnostics.Process.Start(stopInfo);
-
-            System.Threading.Thread.Sleep(5000);
 
             ProcessStartInfo startInfo = new ProcessStartInfo("net", "start sunshinesvc");
             startInfo.UseShellExecute = true;

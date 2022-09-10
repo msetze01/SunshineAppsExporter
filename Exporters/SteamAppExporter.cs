@@ -1,6 +1,5 @@
 ﻿using Playnite.SDK;
 using Playnite.SDK.Models;
-using SunshineAppsExporter.Exporters;
 using SunshineAppsExporter.Models;
 
 namespace SunshineAppsExporter.Exporters {

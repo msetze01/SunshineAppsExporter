@@ -18,6 +18,10 @@ namespace SunshineAppsExporter.Models {
         [JsonProperty("output")]
         public string Output { get; set; } = string.Empty;
 
+        public bool ShouldSerializeDetachedCommands() => DetachedCommands != null && DetachedCommands.Count > 0;
+        public bool ShouldSerializePrepCommands() => PrepCommands != null && PrepCommands.Count > 0;
+        public bool ShouldSerializeOutput() => !string.IsNullOrWhiteSpace(Output);
+
         public SunshineApp WithName(string name) {
             this.Name = name;
             return this;
