@@ -9,7 +9,7 @@ namespace SunshineAppsExporter.Exporters {
 
         public override SunshineApp ExportGame(Game game, IGameDatabaseAPI gameDatabaseAPI) {
             var app = GetBaseApp(game)
-                .WithCommand($"explorer.exe \"playnite://playnite/start/{game.Id}\"");
+                .AddDetachedCommand($"explorer.exe \"playnite://playnite/start/{game.Id}\"");
             return app;
         }
     }
