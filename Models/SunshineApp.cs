@@ -18,47 +18,47 @@ namespace SunshineAppsExporter.Models {
         [JsonProperty("output")]
         public string Output { get; set; } = string.Empty;
 
-        public bool ShouldSerializeDetachedCommands() => DetachedCommands != null && DetachedCommands.Count > 0;
-        public bool ShouldSerializePrepCommands() => PrepCommands != null && PrepCommands.Count > 0;
+        public bool ShouldSerializeDetachedCommands() => DetachedCommands?.Count > 0;
+        public bool ShouldSerializePrepCommands() => PrepCommands?.Count > 0;
         public bool ShouldSerializeOutput() => !string.IsNullOrWhiteSpace(Output);
 
         public SunshineApp WithName(string name) {
-            this.Name = name;
+            Name = name;
             return this;
         }
 
         public SunshineApp WithCommand(string command) {
-            this.Command = command;
+            Command = command;
             return this;
         }
 
         public SunshineApp AddPrepCommand(PrepCommand command) {
-            this.PrepCommands.Add(command);
+            PrepCommands.Add(command);
             return this;
         }
 
         public SunshineApp AppPrepCommand (string doCommand, string undoCommand) {
-            this.PrepCommands.Add(new PrepCommand { Do = doCommand, Undo = undoCommand });
+            PrepCommands.Add(new PrepCommand { Do = doCommand, Undo = undoCommand });
             return this;
         }
     
         public SunshineApp AddDetachedCommand(string command) {
-            this.DetachedCommands.Add(command);
+            DetachedCommands.Add(command);
             return this;
         }
 
         public SunshineApp WithWorkingDir(string workingDir) {
-            this.WorkingDir = workingDir;
+            WorkingDir = workingDir;
             return this;
         }
 
         public SunshineApp WithImagePath(string imagePath) {
-            this.ImagePath = imagePath;
+            ImagePath = imagePath;
             return this;
         }
 
         public SunshineApp WithOutput(string output) {
-            this.Output = output;
+            Output = output;
             return this;
         }
     }

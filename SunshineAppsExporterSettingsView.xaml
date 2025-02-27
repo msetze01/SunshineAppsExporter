@@ -6,7 +6,19 @@
              mc:Ignorable="d"
              d:DesignHeight="400" d:DesignWidth="600">
     <StackPanel>
+        <TextBlock Text="Sunshine Installation Folder:"/>
+        <TextBox Text="{Binding Settings.SunshineAppPath}"/>
         <TextBlock Text="Sunshine Assets Path:"/>
         <TextBox Text="{Binding Settings.SunshineAssetsPath}"/>
+        <TextBlock Text="Sunshine Service Uri:"/>
+        <TextBox Text="{Binding Settings.SunshineServiceUri}"/>
+        <TextBlock Text="Sunshine Service Username:"/>
+        <TextBox Text="{Binding Settings.SunshineUserName}"/>
+        <TextBlock Text="Sunshine Service Password:"/>
+        <TextBox Text="{Binding Settings.SunshinePassword}"/>
+        <TextBlock Text="Export on library update?"/>
+        <CheckBox IsChecked="{Binding Settings.ExportOnLibraryUpdate}" />
+        <TextBlock Text="Export on game install?"/>
+        <CheckBox IsChecked="{Binding Settings.ExportOnGameInstalled}" />
     </StackPanel>
 </UserControl>

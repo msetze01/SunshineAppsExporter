@@ -15,7 +15,6 @@ with your gamestream server.
 - [x] Playnite start support
 - [x] Skip export on tag
 - [ ] Export on tag / configurable tags
-- [ ] Emulator support
 - [ ] Configuration settings and auto-detection for needed application path(s)
 - [ ] Better sunshine service/exe management
 - [ ] Support URL and database sources for cover images

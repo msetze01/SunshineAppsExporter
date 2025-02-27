@@ -20,23 +20,20 @@ namespace SunshineAppsExporter {
         }
 
         internal void ExportAll() {
-            var writer = new SunshineAppsFileWriter(Settings);
-            var file = new SunshineAppsFile {
-                Env = new Dictionary<string, string> {
-                    ["PATH"] = "$(PATH);C:\\Program Files (x86)\\Steam"
-                },
-                Apps = GetApps(API.Database.Games)
-            };
-            writer.Write(file);
+            ExportAll(API.Database.Games.Where(g => g.IsInstalled));
         }
 
-        internal void ExportInstalled() {
+        internal void ExportAll(Game game) {
+            ExportAll(new[] { game });
+        }
+
+        internal void ExportAll(IEnumerable<Game> games) {
             var writer = new SunshineAppsFileWriter(Settings);
             var file = new SunshineAppsFile {
                 Env = new Dictionary<string, string> {
                     ["PATH"] = "$(PATH);C:\\Program Files (x86)\\Steam"
                 },
-                Apps = GetApps(API.Database.Games.Where(g => g.IsInstalled))
+                Apps = GetApps(games)
             };
             writer.Write(file);
         }

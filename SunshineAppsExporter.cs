@@ -3,6 +3,7 @@ using Playnite.SDK.Events;
 using Playnite.SDK.Plugins;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Windows.Controls;
 
 namespace SunshineAppsExporter {
@@ -24,7 +25,9 @@ namespace SunshineAppsExporter {
         }
 
         public override void OnGameInstalled(OnGameInstalledEventArgs args) {
-            // Add code to be executed when game is finished installing.
+            if (Settings.Settings.ExportOnGameInstalled) {
+                Exporter.ExportAll(args.Game);
+            }
         }
 
         public override void OnGameStarted(OnGameStartedEventArgs args) {
@@ -52,7 +55,9 @@ namespace SunshineAppsExporter {
         }
 
         public override void OnLibraryUpdated(OnLibraryUpdatedEventArgs args) {
-            // Add code to be executed when library is updated.
+            if (Settings.Settings.ExportOnLibraryUpdate) {
+                Exporter.ExportAll();
+            }
         }
 
         public override ISettings GetSettings(bool firstRunSettings) {
@@ -66,18 +71,10 @@ namespace SunshineAppsExporter {
         public override IEnumerable<MainMenuItem> GetMainMenuItems(GetMainMenuItemsArgs args) {
             return new List<MainMenuItem> {
                 new MainMenuItem {
-                    Description = "Export All",
+                    Description = "Export Now",
                     MenuSection = "Sunshine Export",
                     Action = a => {
                         ExportAllGames();
-                    }
-                },
-                new MainMenuItem {
-                    Description = "Export Installed Games",
-                    MenuSection = "Sunshine Export",
-                    Action = a => {
-                        ExportInstalledGames();
-
                     }
                 },
                 new MainMenuItem {
@@ -92,11 +89,6 @@ namespace SunshineAppsExporter {
 
         private void ExportAllGames() {
             Exporter.ExportAll();
-            PlayniteApi.Dialogs.ShowMessage("Export complete!", "Sunshine Export");
-        }
-
-        private void ExportInstalledGames() {
-            Exporter.ExportInstalled();
             PlayniteApi.Dialogs.ShowMessage("Export complete!", "Sunshine Export");
         }
 

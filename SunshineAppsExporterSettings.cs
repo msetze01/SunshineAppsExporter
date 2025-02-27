@@ -6,8 +6,19 @@ namespace SunshineAppsExporter {
     public class SunshineAppsExporterSettings : ObservableObject {
         private string sunshineAssetsPath = string.Empty;
         private string sunshineAppPath = string.Empty;
+        private string sunshineUserName = string.Empty;
+        private string sunshinePassword = string.Empty;
+        private string sunshineServiceUri = string.Empty;
+        private bool exportOnLibraryUpdate;
+        private bool exportOnGameInstalled;
+
         public string SunshineAssetsPath { get => sunshineAssetsPath; set => SetValue(ref sunshineAssetsPath, value); }
         public string SunshineAppPath { get => sunshineAppPath; set => SetValue(ref sunshineAppPath, value); }
+        public bool ExportOnLibraryUpdate { get => exportOnLibraryUpdate; set => SetValue(ref exportOnLibraryUpdate, value); }
+        public bool ExportOnGameInstalled { get => exportOnGameInstalled; set => SetValue(ref exportOnGameInstalled, value); }
+        public string SunshineUserName { get => sunshineUserName; set => SetValue(ref sunshineUserName, value); }
+        public string SunshinePassword { get => sunshinePassword; set => SetValue(ref sunshinePassword, value); }
+        public string SunshineServiceUri { get => sunshineServiceUri; set => SetValue(ref sunshineServiceUri, value); }
     }
 
     public class SunshineAppsExporterSettingsViewModel : ObservableObject, ISettings {
@@ -15,7 +26,7 @@ namespace SunshineAppsExporter {
         private SunshineAppsExporterSettings EditingClone { get; set; }
 
         private SunshineAppsExporterSettings settings;
-        public SunshineAppsExporterSettings Settings {
+        public SunshineAppsExporterSettings Settings { 
             get => settings;
             set {
                 settings = value;
